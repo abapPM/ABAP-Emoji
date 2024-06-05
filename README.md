@@ -53,7 +53,7 @@ Note: Include [`twemoji-amazing.css`](https://github.com/abapPM/ABAP-Emoji/blob/
 
 ## Integrate with abapGit (Developer Version)
 
-![image](https://github.com/abapPM/ABAP-Emoji/blob/main/img/abapGit_Emoji_Example.png)
+![image](https://github.com/abapPM/ABAP-Emoji/blob/main/img/abapGit_Emoji_Example.png?raw=true)
 
 1. Insert one line into the following class
 
