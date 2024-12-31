@@ -22,8 +22,8 @@ CLASS zcl_emoji DEFINITION
   PUBLIC SECTION.
 
     TYPES:
-      ty_code    TYPE STANDARD TABLE OF string WITH DEFAULT KEY,
-      ty_results TYPE SORTED TABLE OF string WITH UNIQUE DEFAULT KEY.
+      ty_code    TYPE STANDARD TABLE OF string WITH KEY table_line,
+      ty_results TYPE SORTED TABLE OF string WITH UNIQUE KEY table_line.
 
     CONSTANTS c_version TYPE string VALUE '1.3.0' ##NEEDED.
 

@@ -7,7 +7,7 @@
 CLASS ltcl_test DEFINITION FOR TESTING RISK LEVEL HARMLESS DURATION SHORT FINAL.
 
   PRIVATE SECTION.
-    DATA mo_cut TYPE REF TO zcl_emoji.
+    DATA cut TYPE REF TO zcl_emoji.
 
     METHODS setup.
     METHODS emoji_find FOR TESTING.
@@ -25,97 +25,97 @@ ENDCLASS.
 CLASS ltcl_test IMPLEMENTATION.
 
   METHOD setup.
-    mo_cut = zcl_emoji=>create( ).
+    cut = zcl_emoji=>create( ).
   ENDMETHOD.
 
 
   METHOD emoji_find.
-    DATA lt_emoji TYPE TABLE OF string.
+    DATA emoji TYPE TABLE OF string.
 
-    lt_emoji = mo_cut->find_emoji( '^heart$' ).
+    emoji = cut->find_emoji( '^heart$' ).
 
     cl_aunit_assert=>assert_equals(
-      act = lines( lt_emoji )
+      act = lines( emoji )
       exp = 1 ).
   ENDMETHOD.
 
   METHOD emoji_format.
-    DATA lv_html TYPE string.
+    DATA html TYPE string.
     DATA lv_exp TYPE string.
 
-    lv_html = mo_cut->format_emoji( 'Here is a :heart:' ).
+    html = cut->format_emoji( 'Here is a :heart:' ).
     lv_exp = 'Here is a <img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
-      act = lv_html
+      act = html
       exp = lv_exp ).
   ENDMETHOD.
 
   METHOD emoji_format_other_base.
-    DATA lv_html TYPE string.
+    DATA html TYPE string.
     DATA lv_exp TYPE string.
 
-    lv_html = mo_cut->format_emoji(
+    html = cut->format_emoji(
       line     = 'Here is a :heart:'
       base_url = 'https://mydomain.com/emoji/' ).
 
     lv_exp = 'Here is a <img src="https://mydomain.com/emoji/unicode/2764.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
-      act = lv_html
+      act = html
       exp = lv_exp ).
   ENDMETHOD.
 
   METHOD emoji_css.
-    DATA lt_emoji TYPE TABLE OF string.
+    DATA emoji TYPE TABLE OF string.
 
-    lt_emoji = mo_cut->get_emoji_css( ).
+    emoji = cut->get_emoji_css( ).
 
-    cl_aunit_assert=>assert_not_initial( lt_emoji ).
+    cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
   METHOD emoji_list.
-    DATA lt_emoji TYPE TABLE OF string.
+    DATA emoji TYPE TABLE OF string.
 
-    lt_emoji = mo_cut->get_emoji_list( ).
+    emoji = cut->get_emoji_list( ).
 
-    cl_aunit_assert=>assert_not_initial( lt_emoji ).
+    cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
   METHOD twemoji_find.
-    DATA lt_emoji TYPE TABLE OF string.
+    DATA emoji TYPE TABLE OF string.
 
-    lt_emoji = mo_cut->find_twemoji( '^sparkles$' ).
+    emoji = cut->find_twemoji( '^sparkles$' ).
 
     cl_aunit_assert=>assert_equals(
-      act = lines( lt_emoji )
+      act = lines( emoji )
       exp = 1 ).
   ENDMETHOD.
 
   METHOD twemoji_format.
-    DATA lv_html TYPE string.
+    DATA html TYPE string.
 
-    lv_html = mo_cut->format_twemoji( 'Here are some :sparkles:' ).
+    html = cut->format_twemoji( 'Here are some :sparkles:' ).
 
     cl_aunit_assert=>assert_equals(
-      act = lv_html
+      act = html
       exp = 'Here are some <i class="twa twa-sparkles"></i>' ).
   ENDMETHOD.
 
   METHOD twemoji_css.
-    DATA lt_emoji TYPE TABLE OF string.
+    DATA emoji TYPE TABLE OF string.
 
-    lt_emoji = mo_cut->get_twemoji_css( ).
+    emoji = cut->get_twemoji_css( ).
 
-    cl_aunit_assert=>assert_not_initial( lt_emoji ).
+    cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
   METHOD twemoji_list.
-    DATA lt_emoji TYPE TABLE OF string.
+    DATA emoji TYPE TABLE OF string.
 
-    lt_emoji = mo_cut->get_twemoji_list( ).
+    emoji = cut->get_twemoji_list( ).
 
-    cl_aunit_assert=>assert_not_initial( lt_emoji ).
+    cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
 ENDCLASS.
