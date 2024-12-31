@@ -28,11 +28,8 @@ CLASS ltcl_test IMPLEMENTATION.
     cut = zcl_emoji=>create( ).
   ENDMETHOD.
 
-
   METHOD emoji_find.
-    DATA emoji TYPE string_table.
-
-    emoji = cut->find_emoji( '^heart$' ).
+    DATA(emoji) = cut->find_emoji( '^heart$' ).
 
     cl_aunit_assert=>assert_equals(
       act = lines( emoji )
@@ -40,11 +37,8 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_format.
-    DATA html TYPE string.
-    DATA exp TYPE string.
-
-    html = cut->format_emoji( 'Here is a :heart:' ).
-    exp = 'Here is a <img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
+    DATA(html) = cut->format_emoji( 'Here is a :heart:' ).
+    DATA(exp) = 'Here is a <img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
       act = html
@@ -52,14 +46,11 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_format_other_base.
-    DATA html TYPE string.
-    DATA exp TYPE string.
-
-    html = cut->format_emoji(
+    DATA(html) = cut->format_emoji(
       line     = 'Here is a :heart:'
       base_url = 'https://mydomain.com/emoji/' ).
 
-    exp = 'Here is a <img src="https://mydomain.com/emoji/unicode/2764.png" class="emoji">'.
+    DATA(exp) = 'Here is a <img src="https://mydomain.com/emoji/unicode/2764.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
       act = html
@@ -67,25 +58,19 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_css.
-    DATA emoji TYPE string_table.
-
-    emoji = cut->get_emoji_css( ).
+    DATA(emoji) = cut->get_emoji_css( ).
 
     cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
   METHOD emoji_list.
-    DATA emoji TYPE string_table.
-
-    emoji = cut->get_emoji_list( ).
+    DATA(emoji) = cut->get_emoji_list( ).
 
     cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
   METHOD twemoji_find.
-    DATA emoji TYPE string_table.
-
-    emoji = cut->find_twemoji( '^sparkles$' ).
+    DATA(emoji) = cut->find_twemoji( '^sparkles$' ).
 
     cl_aunit_assert=>assert_equals(
       act = lines( emoji )
@@ -93,9 +78,7 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD twemoji_format.
-    DATA html TYPE string.
-
-    html = cut->format_twemoji( 'Here are some :sparkles:' ).
+    DATA(html) = cut->format_twemoji( 'Here are some :sparkles:' ).
 
     cl_aunit_assert=>assert_equals(
       act = html
@@ -103,17 +86,13 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD twemoji_css.
-    DATA emoji TYPE string_table.
-
-    emoji = cut->get_twemoji_css( ).
+    DATA(emoji) = cut->get_twemoji_css( ).
 
     cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
   METHOD twemoji_list.
-    DATA emoji TYPE string_table.
-
-    emoji = cut->get_twemoji_list( ).
+    DATA(emoji) = cut->get_twemoji_list( ).
 
     cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
