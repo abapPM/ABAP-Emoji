@@ -56,8 +56,8 @@ CLASS ltcl_test IMPLEMENTATION.
     DATA lv_exp TYPE string.
 
     lv_html = mo_cut->format_emoji(
-      iv_line     = 'Here is a :heart:'
-      iv_base_url = 'https://mydomain.com/emoji/' ).
+      line     = 'Here is a :heart:'
+      base_url = 'https://mydomain.com/emoji/' ).
 
     lv_exp = 'Here is a <img src="https://mydomain.com/emoji/unicode/2764.png" class="emoji">'.
 
