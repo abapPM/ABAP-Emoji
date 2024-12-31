@@ -30,7 +30,7 @@ CLASS ltcl_test IMPLEMENTATION.
 
 
   METHOD emoji_find.
-    DATA emoji TYPE TABLE OF string.
+    DATA emoji TYPE string_table.
 
     emoji = cut->find_emoji( '^heart$' ).
 
@@ -41,33 +41,33 @@ CLASS ltcl_test IMPLEMENTATION.
 
   METHOD emoji_format.
     DATA html TYPE string.
-    DATA lv_exp TYPE string.
+    DATA exp TYPE string.
 
     html = cut->format_emoji( 'Here is a :heart:' ).
-    lv_exp = 'Here is a <img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
+    exp = 'Here is a <img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
       act = html
-      exp = lv_exp ).
+      exp = exp ).
   ENDMETHOD.
 
   METHOD emoji_format_other_base.
     DATA html TYPE string.
-    DATA lv_exp TYPE string.
+    DATA exp TYPE string.
 
     html = cut->format_emoji(
       line     = 'Here is a :heart:'
       base_url = 'https://mydomain.com/emoji/' ).
 
-    lv_exp = 'Here is a <img src="https://mydomain.com/emoji/unicode/2764.png" class="emoji">'.
+    exp = 'Here is a <img src="https://mydomain.com/emoji/unicode/2764.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
       act = html
-      exp = lv_exp ).
+      exp = exp ).
   ENDMETHOD.
 
   METHOD emoji_css.
-    DATA emoji TYPE TABLE OF string.
+    DATA emoji TYPE string_table.
 
     emoji = cut->get_emoji_css( ).
 
@@ -75,7 +75,7 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_list.
-    DATA emoji TYPE TABLE OF string.
+    DATA emoji TYPE string_table.
 
     emoji = cut->get_emoji_list( ).
 
@@ -83,7 +83,7 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD twemoji_find.
-    DATA emoji TYPE TABLE OF string.
+    DATA emoji TYPE string_table.
 
     emoji = cut->find_twemoji( '^sparkles$' ).
 
@@ -103,7 +103,7 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD twemoji_css.
-    DATA emoji TYPE TABLE OF string.
+    DATA emoji TYPE string_table.
 
     emoji = cut->get_twemoji_css( ).
 
@@ -111,7 +111,7 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD twemoji_list.
-    DATA emoji TYPE TABLE OF string.
+    DATA emoji TYPE string_table.
 
     emoji = cut->get_twemoji_list( ).
 
