@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: ...
+Upstream-Name: ABAP-Emoji
 Upstream-Contact: apm.to Inc. <hello@apm.to>
-Source: https://github.com/abapPM/ABAP-...
+Source: https://github.com/abapPM/ABAP-Emoji
 
 Files: *
 Copyright: 2024 apm.to Inc. <https://apm.to>
