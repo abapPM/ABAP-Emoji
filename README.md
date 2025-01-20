@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/endpoint?url=https://shield.abap.space/version-shield-json/github/abapPM/ABAP-Emoji/src/zcl_emoji.clas.abap/c_version&label=Version&color=blue)
+![Version](https://img.shields.io/endpoint?url=https://shield.abappm.com/github/abapPM/ABAP-Emoji/src/zcl_emoji.clas.abap/c_version&label=Version&color=blue)
 
 [![License](https://img.shields.io/github/license/abapPM/ABAP-Emoji?label=License&color=success)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg?color=success)](https://github.com/abapPM/.github/blob/main/CODE_OF_CONDUCT.md)
@@ -43,7 +43,7 @@ write zcl_emoji=>create( )->format_emoji( 'I :red-heart: ABAP' ).
 
 ### Output
 
-I ❤️ ABAP
+I ❤ ABAP
 
 ```html
 I <i class="twa twa-red-heart"></i> ABAP
@@ -77,14 +77,15 @@ CLASS zcl_abapgit_syntax_highlighter IMPLEMENTATION.
 
 All contributions are welcome! Read our [Contribution Guidelines](CONTRIBUTING.md), fork this repo, and create a pull request.
 
-You can install the developer version of ABAP Emoji using [abapGit](https://github.com/abapGit/abapGit) either by creating a new online repository for https://github.com/abapPM/ABAP-Emoji.
+You can install the developer version of ABAP Emoji using [abapGit](https://github.com/abapGit/abapGit) either by creating a new online repository for `https://github.com/abapPM/ABAP-Emoji`.
 
 Recommended SAP package: `$EMOJI`.
 
 ## About
 
-Made with :heart: in Canada
+Made with ❤ in Canada
 
 Copyright 2024 apm.to Inc. <https://apm.to>
 
-Follow [@marcfbe](https://twitter.com/marcfbe) on X/Twitter
+Follow [@marcf.be](https://bsky.app/profile/marcf.be) on Bluesky and [@marcfbe](https://linkedin.com/in/marcfbe) on LinkedIn
+
