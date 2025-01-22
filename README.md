@@ -11,9 +11,12 @@ GitHub and Twemoji Emoji Sets for ABAP.
 Made by [Marc Bernard](https://marcbernardtools.com/) giving back to the [SAP Community](https://community.sap.com/).
 
 - [GitHub Emoji](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
-- [Twitter Emoji](https://github.com/twitter/twemoji) and [Twemoji Amazing](https://github.com/SebastianAigner/twemoji-amazing) (MIT License)
+- [Twitter Emoji](https://github.com/twitter/twemoji) and [Twemoji Amazing](https://github.com/SebastianAigner/twemoji-amazing) (deprecated)
 
 NO WARRANTIES, [MIT License](LICENSE)
+
+> [!WARNING]
+> Support for Twemoji is deprecated. It will be replaced by support for the full Unicode Emoji list in v2.
 
 ## Prerequisite
 
