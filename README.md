@@ -121,6 +121,10 @@ You can install the developer version of ABAP Emoji using [abapGit](https://gith
 
 Recommended SAP package: `$EMOJI`.
 
+## Attribution
+
+The Emoji data is under the Unicode License and copyright to the Unicode Consortium. The full license can be found here: http://www.unicode.org/copyright.html.
+
 ## About
 
 Made with ❤ in Canada
