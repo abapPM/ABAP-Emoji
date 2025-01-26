@@ -1,9 +1,9 @@
-********************************************************************************
+************************************************************************
 * ABAP Emoji
 *
-* Copyright 2022 Marc Bernard <https://marcbernardtools.com/>
+* Copyright 2024 apm.to Inc. <https://apm.to>
 * SPDX-License-Identifier: MIT
-********************************************************************************
+************************************************************************
 CLASS ltcl_test DEFINITION FOR TESTING RISK LEVEL HARMLESS DURATION SHORT FINAL.
 
   PRIVATE SECTION.
@@ -15,6 +15,10 @@ CLASS ltcl_test DEFINITION FOR TESTING RISK LEVEL HARMLESS DURATION SHORT FINAL.
     METHODS emoji_format_other_base FOR TESTING.
     METHODS emoji_css FOR TESTING.
     METHODS emoji_list FOR TESTING.
+    METHODS emoji_unicode_heart FOR TESTING.
+    METHODS emoji_unicode_gemini FOR TESTING.
+    METHODS emoji_unicode_ambulance FOR TESTING.
+    METHODS emoji_unicode_greenland FOR TESTING.
     METHODS twemoji_find FOR TESTING.
     METHODS twemoji_format FOR TESTING.
     METHODS twemoji_css FOR TESTING.
@@ -29,10 +33,10 @@ CLASS ltcl_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_find.
-    DATA(emoji) = cut->find_emoji( '^heart$' ).
+    DATA(emojis) = cut->find_emoji( '^heart$' ).
 
     cl_aunit_assert=>assert_equals(
-      act = lines( emoji )
+      act = lines( emojis )
       exp = 1 ).
   ENDMETHOD.
 
@@ -48,7 +52,7 @@ CLASS ltcl_test IMPLEMENTATION.
   METHOD emoji_format_other_base.
     DATA(html) = cut->format_emoji(
       line     = 'Here is a :heart:'
-      base_url = 'https://mydomain.com/emoji/' ).
+      base_url = 'https://mydomain.com/emoji' ).
 
     DATA(exp) = 'Here is a <img src="https://mydomain.com/emoji/unicode/2764.png" class="emoji">'.
 
@@ -69,11 +73,51 @@ CLASS ltcl_test IMPLEMENTATION.
     cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
-  METHOD twemoji_find.
-    DATA(emoji) = cut->find_twemoji( '^sparkles$' ).
+  METHOD emoji_unicode_heart.
+    " heart (utf16: 6427)
+    DATA(html) = cut->format_emoji( '❤' ).
+    DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
-      act = lines( emoji )
+      act = html
+      exp = exp ).
+  ENDMETHOD.
+
+  METHOD emoji_unicode_gemini.
+    " gemini (utf16: 4A26)
+    DATA(html) = cut->format_emoji( '♊' ).
+    DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/264a.png" class="emoji">'.
+
+    cl_aunit_assert=>assert_equals(
+      act = html
+      exp = exp ).
+  ENDMETHOD.
+
+  METHOD emoji_unicode_ambulance.
+    " ambulance (utf16: 3DD8 91DE)
+    DATA(html) = cut->format_emoji( '🚑' ).
+    DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f691.png" class="emoji">'.
+
+    cl_aunit_assert=>assert_equals(
+      act = html
+      exp = exp ).
+  ENDMETHOD.
+
+  METHOD emoji_unicode_greenland.
+    " greenland (utf16 3CD8 ECDD 3CD8 F1DD)
+    DATA(html) = cut->format_emoji( '🇬🇱' ).
+    DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f1ec-1f1f1.png" class="emoji">'.
+
+    cl_aunit_assert=>assert_equals(
+      act = html
+      exp = exp ).
+  ENDMETHOD.
+
+  METHOD twemoji_find.
+    DATA(emojis) = cut->find_twemoji( '^sparkles$' ).
+
+    cl_aunit_assert=>assert_equals(
+      act = lines( emojis )
       exp = 1 ).
   ENDMETHOD.
 

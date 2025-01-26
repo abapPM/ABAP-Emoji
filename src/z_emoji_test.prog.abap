@@ -1,9 +1,7 @@
 ********************************************************************************
 * ABAP Emoji
 *
-* https://github.com/Marc-Bernard-Tools/ABAP-Emoji
-*
-* Copyright 2022 Marc Bernard <https://marcbernardtools.com/>
+* Copyright 2024 apm.to Inc. <https://apm.to>
 * SPDX-License-Identifier: MIT
 ********************************************************************************
 * This is some code which includes a couple of in-line :emoji:
