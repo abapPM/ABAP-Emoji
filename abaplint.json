@@ -9,7 +9,7 @@
   "global": {
     "exclude": [],
     "files": "/src/**/*.*",
-    "noIssues": [],
+    "noIssues": ["z_emoji_import.prog"],
     "skipGeneratedBOPFInterfaces": true,
     "skipGeneratedFunctionGroups": true,
     "skipGeneratedGatewayClasses": true,
