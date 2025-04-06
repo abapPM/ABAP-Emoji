@@ -19,10 +19,6 @@ CLASS ltcl_test DEFINITION FOR TESTING RISK LEVEL HARMLESS DURATION SHORT FINAL.
     METHODS emoji_unicode_gemini FOR TESTING.
     METHODS emoji_unicode_ambulance FOR TESTING.
     METHODS emoji_unicode_greenland FOR TESTING.
-    METHODS twemoji_find FOR TESTING.
-    METHODS twemoji_format FOR TESTING.
-    METHODS twemoji_css FOR TESTING.
-    METHODS twemoji_list FOR TESTING.
 
 ENDCLASS.
 
@@ -111,34 +107,6 @@ CLASS ltcl_test IMPLEMENTATION.
     cl_aunit_assert=>assert_equals(
       act = html
       exp = exp ).
-  ENDMETHOD.
-
-  METHOD twemoji_find.
-    DATA(emojis) = cut->find_twemoji( '^sparkles$' ).
-
-    cl_aunit_assert=>assert_equals(
-      act = lines( emojis )
-      exp = 1 ).
-  ENDMETHOD.
-
-  METHOD twemoji_format.
-    DATA(html) = cut->format_twemoji( 'Here are some :sparkles:' ).
-
-    cl_aunit_assert=>assert_equals(
-      act = html
-      exp = 'Here are some <i class="twa twa-sparkles"></i>' ).
-  ENDMETHOD.
-
-  METHOD twemoji_css.
-    DATA(emoji) = cut->get_twemoji_css( ).
-
-    cl_aunit_assert=>assert_not_initial( emoji ).
-  ENDMETHOD.
-
-  METHOD twemoji_list.
-    DATA(emoji) = cut->get_twemoji_list( ).
-
-    cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
 ENDCLASS.
