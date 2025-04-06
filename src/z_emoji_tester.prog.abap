@@ -16,7 +16,7 @@ START-OF-SELECTION.
 
   DATA(emoji) = zcl_emoji=>create( ).
 
-  data(html) =
+  DATA(html) =
     `<html>` &&
     `<head>` &&
     `<title>Emoji Tester</title>` &&
