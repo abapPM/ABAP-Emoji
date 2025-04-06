@@ -6,21 +6,17 @@
 
 # ✨ ABAP-Emoji ✨
 
-GitHub and Twemoji Emoji Sets for ABAP.
+[GitHub Emoji](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) Sets for ABAP.
 
-- [GitHub Emoji](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
-- [Twitter Emoji](https://github.com/twitter/twemoji) and [Twemoji Amazing](https://github.com/SebastianAigner/twemoji-amazing) (deprecated)
+Based on [GitHub Emoji](https://docs.github.com/en/rest/emojis/emojis) and [API](https://api.github.com/emojis), v8, 2025-04-05.
 
 NO WARRANTIES, [MIT License](LICENSE)
 
-> [!WARNING]
-> Support for Twemoji is deprecated. It will be replaced by support for the full Unicode Emoji list in v2.
-
 ## Prerequisite
 
-HTML output with Internet connection since Emoji graphics are hosted on https://twemoji.maxcdn.com/.
+HTML output with Internet connection since Emoji graphics are hosted on https://github.githubassets.com.
 
-## Usage - GitHub Emoji
+## Usage
 
 Use [GitHub Cheatsheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) to view supported Emoji shortcodes. Raw text may contains the emoji character (cut&paste it into your text) or the emoji shortcode.
 
@@ -49,45 +45,11 @@ I ❤ ABAP
 I <img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji"> ABAP
 ```
 
-## Usage - Twemoji
-
-Use [Twemoji Cheatsheet](https://twemoji-cheatsheet.vercel.app/) to view supported Emoji.
-
-To find the name of an Emoji, go to the official [Unicode Emoji List](https://unicode.org/emoji/charts/emoji-list.html). The name is based on the "CLDR short name" with spaces replaced by `-`.
-
-Other helpful sources: [Emoji Test (Plain Text List)](https://unicode.org/Public/emoji/13.1/emoji-test.txt), [Emoji JSON](https://github.com/amio/emoji.json),
-[Emoji Community Projects](https://github.com/twitter/twemoji#community-projects).
-
-Get CSS for emoji class:
-
-```abap
-data(emoji) = zcl_emoji=>create( ).
-data(css) = emoji->get_twemoji_styles( ).
-```
-
-Find twemojis with regex:
-
-```abap
-data(list) = emoji->find_twemoji( '^sparkles$' ).
-```
-
-Format any text:
-
-```abap
-write emoji->format_twemoji( 'I :red-heart: ABAP' ).
-```
-
-I ❤ ABAP
-
-```html
-I <i class="twa twa-red-heart"></i> ABAP
-```
-
 ## Integrate with abapGit (Developer Version)
 
 ![image](https://github.com/abapPM/ABAP-Emoji/blob/main/img/abapGit_Emoji_Example.png?raw=true)
 
-1. Insert one line into the following class
+Insert one line into the following class
 
 ```abap
 CLASS zcl_abapgit_syntax_highlighter IMPLEMENTATION.
@@ -100,10 +62,6 @@ CLASS zcl_abapgit_syntax_highlighter IMPLEMENTATION.
 ...
   ENDMETHOD.
 ```
-
-2. Start transaction `SMW0` > `Binary data` > `$ABAPGIT`
-3. Edit `ZABAPGIT_ICON_FONT_CSS`
-4. Append [`twemoji-amazing.css`](https://github.com/mbtools/ABAP-Emoji/blob/main/css/twemoji-amazing.css) to the icon css and save
 
 ## Installation
 

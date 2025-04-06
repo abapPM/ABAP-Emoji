@@ -1,5 +1,5 @@
 ********************************************************************************
-* ABAP Emoji Tester
+* Emoji Tester
 *
 * Copyright 2024 apm.to Inc. <https://apm.to>
 * SPDX-License-Identifier: MIT
@@ -14,4 +14,16 @@ SELECTION-SCREEN END OF BLOCK b1.
 START-OF-SELECTION.
 
   DATA(emoji) = zcl_emoji=>create( ).
-  cl_abap_browser=>show_html( html_string = emoji->format_emoji( p_text ) ).
+
+  DATA(html) =
+    `<html>` &&
+    `<head>` &&
+    `<title>Emoji Tester</title>` &&
+    `<style>` && concat_lines_of( emoji->get_emoji_css( ) ) && `</style>` &&
+    `</head>` &&
+    `<body>` && emoji->format_emoji( p_text ) && `</body>` &&
+    `</html>`.
+
+  cl_abap_browser=>show_html(
+    title       = 'Emoji Tester'
+    html_string = html ).

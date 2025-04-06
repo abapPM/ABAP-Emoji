@@ -17,6 +17,24 @@
     </item>
     <item>
      <ID>S</ID>
+     <KEY>P_BRAND</KEY>
+     <ENTRY>Brand</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_EMOJIN</KEY>
+     <ENTRY>Emojinarium</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_GITHUB</KEY>
+     <ENTRY>GitHub</ENTRY>
+     <LENGTH>14</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
      <KEY>P_TEXT</KEY>
      <ENTRY>Some text with emoji</ENTRY>
      <LENGTH>28</LENGTH>
