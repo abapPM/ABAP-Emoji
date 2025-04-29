@@ -44,9 +44,12 @@ CLASS lcl_github_emoji IMPLEMENTATION.
     LOOP AT list ASSIGNING FIELD-SYMBOL(<line>).
       CLEAR emoji.
       SPLIT <line> AT ':' INTO emoji-name emoji-img.
-      DATA(charcode) = substring_after( val = emoji-img sub = '/' ).
-      SPLIT charcode AT '-' INTO TABLE DATA(codes).
-      LOOP AT codes INTO charcode.
+      DATA(charcodes) = substring_after( val = emoji-img sub = '/' ).
+      SPLIT charcodes AT '-' INTO TABLE DATA(codes).
+      IF lines( codes ) = 1.
+        emoji-hex = to_lower( charcodes ).
+      ENDIF.
+      LOOP AT codes INTO DATA(charcode).
         emoji-code = emoji-code && unicode_to_utf16_string( to_upper( charcode ) ).
       ENDLOOP.
       emoji-img = emoji-img && '.png'.
