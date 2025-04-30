@@ -20,7 +20,6 @@ CLASS zcl_emoji DEFINITION PUBLIC CREATE PRIVATE.
         name TYPE string,
         img  TYPE string,
         code TYPE string,
-        hex  TYPE string,
       END OF ty_emoji,
       ty_emojis TYPE HASHED TABLE OF ty_emoji
         WITH UNIQUE KEY name
@@ -109,6 +108,8 @@ CLASS zcl_emoji IMPLEMENTATION.
 
     result = line.
 
+    CHECK result CA ':' OR result CS '&#x'.
+
     IF base_url IS INITIAL.
       DATA(base) = c_base_url.
     ELSE.
@@ -118,23 +119,14 @@ CLASS zcl_emoji IMPLEMENTATION.
       base = base && '/'.
     ENDIF.
 
-    DATA(has_names) = xsdbool( result CA ':' ).
-    DATA(has_hex) = xsdbool( result CS '&#x' ).
-
     LOOP AT emojis ASSIGNING FIELD-SYMBOL(<emoji>).
       DATA(html)  = |<img src="{ base }{ <emoji>-img }" class="emoji">|.
 
-      IF has_names = abap_true.
-        DATA(emoji) = |:{ <emoji>-name }:|.
-        REPLACE ALL OCCURRENCES OF emoji IN result WITH html IGNORING CASE.
-      ENDIF.
-
-      IF has_hex = abap_true AND <emoji>-hex IS NOT INITIAL.
-        DATA(code) = |&#x{ <emoji>-hex };|.
-        REPLACE ALL OCCURRENCES OF code IN result WITH html IGNORING CASE.
-      ENDIF.
-
+      DATA(emoji) = |:{ <emoji>-name }:|.
+      REPLACE ALL OCCURRENCES OF emoji IN result WITH html.
       IF <emoji>-code IS NOT INITIAL.
+        DATA(code) = |&#x{ <emoji>-code };|.
+        REPLACE ALL OCCURRENCES OF code IN result WITH html.
         REPLACE ALL OCCURRENCES OF <emoji>-code IN result WITH html.
       ENDIF.
     ENDLOOP.
