@@ -9,7 +9,7 @@
 * repository readme
 ********************************************************************************
 
-REPORT z_emoji_test.
+REPORT /apmg/emoji_test.
 
 START-OF-SELECTION.
 
