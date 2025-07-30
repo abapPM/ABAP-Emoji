@@ -23,7 +23,7 @@ Use [GitHub Cheatsheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/maste
 Get CSS for the emoji class:
 
 ```abap
-data(emoji) = zcl_emoji=>create( ).
+data(emoji) = /apmg/cl_emoji=>create( ).
 data(css) = emoji->get_emoji_styles( ).
 ```
 
@@ -58,7 +58,7 @@ CLASS zcl_abapgit_syntax_highlighter IMPLEMENTATION.
 ...
     lv_escaped = show_hidden_chars( lv_escaped ).
 
-    lv_escaped = zcl_emoji=>create( )->format_emoji( lv_escaped ). "<<< insert
+    lv_escaped = /apmg/cl_emoji=>create( )->format_emoji( lv_escaped ). "<<< insert
 ...
   ENDMETHOD.
 ```
