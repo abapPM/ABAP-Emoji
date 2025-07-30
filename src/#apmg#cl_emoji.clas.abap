@@ -13,7 +13,7 @@ CLASS /apmg/cl_emoji DEFINITION
 ************************************************************************
   PUBLIC SECTION.
 
-    CONSTANTS c_version TYPE string VALUE '2.0.0' ##NEEDED.
+    CONSTANTS c_version TYPE string VALUE '3.0.0' ##NEEDED.
 
     TYPES:
       ty_code    TYPE string_table,
