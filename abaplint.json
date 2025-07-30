@@ -9,7 +9,7 @@
   "global": {
     "exclude": [],
     "files": "/src/**/*.*",
-    "noIssues": ["z_emoji_import.prog"],
+    "noIssues": ["#apmg#emoji_import.prog"],
     "skipGeneratedBOPFInterfaces": true,
     "skipGeneratedFunctionGroups": true,
     "skipGeneratedGatewayClasses": true,
@@ -21,7 +21,7 @@
   },
   "rules": {
     "7bit_ascii": {
-      "exclude": ["zcl_emoji.clas.testclasses"]
+      "exclude": ["#apmg#cl_emoji.clas.testclasses.abap"]
     },
     "abapdoc": false,
     "add_test_attributes": true,
