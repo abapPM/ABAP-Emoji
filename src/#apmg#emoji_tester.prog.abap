@@ -5,7 +5,7 @@
 * SPDX-License-Identifier: MIT
 ********************************************************************************
 
-REPORT z_emoji_tester.
+REPORT /apmg/emoji_tester.
 
 SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME.
   PARAMETERS p_text TYPE string LOWER CASE DEFAULT 'Emoji for ABAP made with :heart: in Canada :canada:'.
@@ -13,7 +13,7 @@ SELECTION-SCREEN END OF BLOCK b1.
 
 START-OF-SELECTION.
 
-  DATA(emoji) = zcl_emoji=>create( ).
+  DATA(emoji) = /apmg/cl_emoji=>create( ).
 
   DATA(html) =
     `<html>` &&

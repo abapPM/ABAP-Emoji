@@ -1,4 +1,6 @@
-CLASS zcl_emoji DEFINITION PUBLIC CREATE PRIVATE.
+CLASS /apmg/cl_emoji DEFINITION
+  PUBLIC
+  CREATE PRIVATE.
 
 ************************************************************************
 * ABAP Emoji
@@ -28,7 +30,7 @@ CLASS zcl_emoji DEFINITION PUBLIC CREATE PRIVATE.
 
     CLASS-METHODS create
       RETURNING
-        VALUE(result) TYPE REF TO zcl_emoji.
+        VALUE(result) TYPE REF TO /apmg/cl_emoji.
 
     METHODS constructor.
 
@@ -60,7 +62,7 @@ CLASS zcl_emoji DEFINITION PUBLIC CREATE PRIVATE.
 
     CONSTANTS c_base_url TYPE string VALUE 'https://github.githubassets.com/images/icons/emoji'.
 
-    CLASS-DATA emoji TYPE REF TO zcl_emoji.
+    CLASS-DATA emoji TYPE REF TO /apmg/cl_emoji.
 
     DATA emojis TYPE ty_emojis.
 
@@ -70,7 +72,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_emoji IMPLEMENTATION.
+CLASS /apmg/cl_emoji IMPLEMENTATION.
 
 
   METHOD constructor.

@@ -17,7 +17,7 @@ CLASS lcl_github_emoji DEFINITION.
 
     CLASS-METHODS get
       RETURNING
-        VALUE(result) TYPE zcl_emoji=>ty_emojis.
+        VALUE(result) TYPE /apmg/cl_emoji=>ty_emojis.
 
   PRIVATE SECTION.
 

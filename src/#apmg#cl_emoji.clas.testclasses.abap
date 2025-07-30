@@ -4,10 +4,10 @@
 * Copyright 2024 apm.to Inc. <https://apm.to>
 * SPDX-License-Identifier: MIT
 ************************************************************************
-CLASS ltcl_test DEFINITION FOR TESTING RISK LEVEL HARMLESS DURATION SHORT FINAL.
+CLASS ltcl_emoji_test DEFINITION FOR TESTING RISK LEVEL HARMLESS DURATION SHORT FINAL.
 
   PRIVATE SECTION.
-    DATA cut TYPE REF TO zcl_emoji.
+    DATA cut TYPE REF TO /apmg/cl_emoji.
 
     METHODS setup.
     METHODS emoji_find FOR TESTING.
@@ -22,10 +22,10 @@ CLASS ltcl_test DEFINITION FOR TESTING RISK LEVEL HARMLESS DURATION SHORT FINAL.
 
 ENDCLASS.
 
-CLASS ltcl_test IMPLEMENTATION.
+CLASS ltcl_emoji_test IMPLEMENTATION.
 
   METHOD setup.
-    cut = zcl_emoji=>create( ).
+    cut = /apmg/cl_emoji=>create( ).
   ENDMETHOD.
 
   METHOD emoji_find.
