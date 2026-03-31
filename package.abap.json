@@ -1,7 +1,8 @@
 {
   "name": "emoji",
   "version": "3.0.0",
-  "description": "Emoji for ABAP ❤️",
+  "description": "Emoji for ABAP ❤",
+  "type": "module",
   "keywords": [
     "abap",
     "apm",
@@ -26,7 +27,6 @@
       "email": "marc@abappm.com"
     }
   ],
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abapPM/ABAP-Emoji.git"
