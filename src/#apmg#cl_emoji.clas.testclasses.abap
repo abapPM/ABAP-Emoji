@@ -10,7 +10,7 @@ CLASS ltcl_emoji_test DEFINITION FOR TESTING RISK LEVEL HARMLESS DURATION SHORT 
     DATA cut TYPE REF TO /apmg/cl_emoji.
 
     METHODS setup.
-    METHODS emoji_find FOR TESTING.
+    METHODS emoji_search FOR TESTING.
     METHODS emoji_format FOR TESTING.
     METHODS emoji_format_other_base FOR TESTING.
     METHODS emoji_css FOR TESTING.
@@ -28,8 +28,8 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
     cut = /apmg/cl_emoji=>create( ).
   ENDMETHOD.
 
-  METHOD emoji_find.
-    DATA(emojis) = cut->find_emoji( '^heart$' ).
+  METHOD emoji_search.
+    DATA(emojis) = cut->search( '^heart$' ).
 
     cl_aunit_assert=>assert_equals(
       act = lines( emojis )
@@ -37,7 +37,7 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_format.
-    DATA(html) = cut->format_emoji( 'Here is a :heart:' ).
+    DATA(html) = cut->format( 'Here is a :heart:' ).
     DATA(exp) = 'Here is a <img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
@@ -46,7 +46,7 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_format_other_base.
-    DATA(html) = cut->format_emoji(
+    DATA(html) = cut->format(
       line     = 'Here is a :heart:'
       base_url = 'https://mydomain.com/emoji' ).
 
@@ -58,20 +58,20 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_css.
-    DATA(emoji) = cut->get_emoji_css( ).
+    DATA(emoji) = cut->get_css( ).
 
     cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
   METHOD emoji_list.
-    DATA(emoji) = cut->get_emoji_list( ).
+    DATA(emoji) = cut->get_list( ).
 
     cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
 
   METHOD emoji_unicode_heart.
     " heart (utf16: 6427)
-    DATA(html) = cut->format_emoji( '❤' ).
+    DATA(html) = cut->format( '❤' ).
     DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
@@ -81,7 +81,7 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
 
   METHOD emoji_unicode_gemini.
     " gemini (utf16: 4A26)
-    DATA(html) = cut->format_emoji( '♊' ).
+    DATA(html) = cut->format( '♊' ).
     DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/264a.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
@@ -91,7 +91,7 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
 
   METHOD emoji_unicode_ambulance.
     " ambulance (utf16: 3DD8 91DE)
-    DATA(html) = cut->format_emoji( '🚑' ).
+    DATA(html) = cut->format( '🚑' ).
     DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f691.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(
@@ -101,7 +101,7 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
 
   METHOD emoji_unicode_greenland.
     " greenland (utf16 3CD8 ECDD 3CD8 F1DD)
-    DATA(html) = cut->format_emoji( '🇬🇱' ).
+    DATA(html) = cut->format( '🇬🇱' ).
     DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f1ec-1f1f1.png" class="emoji">'.
 
     cl_aunit_assert=>assert_equals(

@@ -19,9 +19,9 @@ START-OF-SELECTION.
     `<html>` &&
     `<head>` &&
     `<title>Emoji Tester</title>` &&
-    `<style>` && concat_lines_of( emoji->get_emoji_css( ) ) && `</style>` &&
+    `<style>` && concat_lines_of( emoji->get_css( ) ) && `</style>` &&
     `</head>` &&
-    `<body>` && emoji->format_emoji( p_text ) && `</body>` &&
+    `<body>` && emoji->format( p_text ) && `</body>` &&
     `</html>`.
 
   cl_abap_browser=>show_html(

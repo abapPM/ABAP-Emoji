@@ -18,25 +18,25 @@ HTML output with Internet connection since Emoji graphics are hosted on https://
 
 ## Usage
 
-Use [GitHub Cheatsheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) to view supported Emoji shortcodes. Raw text may contains the emoji character (cut&paste it into your text) or the emoji shortcode.
+Use [GitHub Cheatsheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) or this [complete list](https://gist.github.com/rxaviers/7360908) to view supported Emoji shortcodes. Raw text may contains the emoji character (cut&paste it into your text) or the emoji shortcode.
 
 Get CSS for the emoji class:
 
 ```abap
 data(emoji) = /apmg/cl_emoji=>create( ).
-data(css) = emoji->get_emoji_styles( ).
+data(css) = emoji->get_css( ).
 ```
 
 Find emojis with regex:
 
 ```abap
-data(list) = emoji->find_emoji( '^heart$' ).
+data(list) = emoji->search( '^heart$' ).
 ```
 
 Format any text:
 
 ```abap
-write emoji->format_emoji( 'I :heart: ABAP' ).
+write emoji->format( 'I :heart: ABAP' ).
 ```
 
 I ❤ ABAP
@@ -58,7 +58,7 @@ CLASS zcl_abapgit_syntax_highlighter IMPLEMENTATION.
 ...
     lv_escaped = show_hidden_chars( lv_escaped ).
 
-    lv_escaped = /apmg/cl_emoji=>create( )->format_emoji( lv_escaped ). "<<< insert
+    lv_escaped = /apmg/cl_emoji=>create( )->format( lv_escaped ). "<<< insert
 ...
   ENDMETHOD.
 ```
