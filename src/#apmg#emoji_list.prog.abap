@@ -27,7 +27,7 @@ START-OF-SELECTION.
 
   " TODO: Format this as a nice table
   LOOP AT list ASSIGNING FIELD-SYMBOL(<emoji>).
-    data(tag) = |:{ <emoji> }:|.
+    DATA(tag) = |:{ <emoji> }:|.
     html = html && emoji->format( tag ) && |  { tag }<br>|.
   ENDLOOP.
 
