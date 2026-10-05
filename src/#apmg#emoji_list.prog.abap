@@ -9,6 +9,10 @@
 
 REPORT /apmg/emoji_list.
 
+SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-t01.
+  PARAMETERS p_regex TYPE string LOWER CASE DEFAULT 'arrow'.
+SELECTION-SCREEN END OF BLOCK b1.
+
 START-OF-SELECTION.
 
   DATA(emoji) = /apmg/cl_emoji=>create( ).
@@ -17,7 +21,7 @@ START-OF-SELECTION.
     `<html>` &&
     `<head>` &&
     `<title>Emoji Tester</title>` &&
-    `<style>` && concat_lines_of( emoji->get_css( ) ) && `</style>` &&
+    `<style>` && emoji->styles( ) && `</style>` &&
     `</head>` &&
     `<body>`.
 
@@ -25,11 +29,23 @@ START-OF-SELECTION.
 
   html = html && |<h1>Emoji List ({ lines( list ) } emoji)</h1>|.
 
+  DATA(count) = 0.
+
   " TODO: Format this as a nice table
   LOOP AT list ASSIGNING FIELD-SYMBOL(<emoji>).
+    IF p_regex IS NOT INITIAL.
+      FIND REGEX p_regex IN <emoji> ##REGEX_POSIX.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+    ENDIF.
+
     DATA(tag) = |:{ <emoji> }:|.
     html = html && emoji->format( tag ) && |  { tag }<br>|.
+    count = count + 1.
   ENDLOOP.
+
+  html = html && |<h2>{ count } emoji selected</h2>|.
 
   html = html && `</html>`.
 

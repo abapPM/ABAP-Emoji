@@ -11,33 +11,21 @@
    </PROGDIR>
    <TPOOL>
     <item>
+     <ID>I</ID>
+     <KEY>T01</KEY>
+     <ENTRY>Emoji Filter</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
      <ID>R</ID>
      <ENTRY>Emoji List</ENTRY>
-     <LENGTH>21</LENGTH>
+     <LENGTH>10</LENGTH>
     </item>
     <item>
      <ID>S</ID>
-     <KEY>P_BRAND</KEY>
-     <ENTRY>Brand</ENTRY>
-     <LENGTH>13</LENGTH>
-    </item>
-    <item>
-     <ID>S</ID>
-     <KEY>P_EMOJIN</KEY>
-     <ENTRY>Emojinarium</ENTRY>
-     <LENGTH>19</LENGTH>
-    </item>
-    <item>
-     <ID>S</ID>
-     <KEY>P_GITHUB</KEY>
-     <ENTRY>GitHub</ENTRY>
-     <LENGTH>14</LENGTH>
-    </item>
-    <item>
-     <ID>S</ID>
-     <KEY>P_TEXT</KEY>
-     <ENTRY>Some text with emoji</ENTRY>
-     <LENGTH>28</LENGTH>
+     <KEY>P_REGEX</KEY>
+     <ENTRY>Emoji name (regex)</ENTRY>
+     <LENGTH>26</LENGTH>
     </item>
    </TPOOL>
   </asx:values>

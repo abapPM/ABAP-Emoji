@@ -19,7 +19,7 @@ START-OF-SELECTION.
     `<html>` &&
     `<head>` &&
     `<title>Emoji Tester</title>` &&
-    `<style>` && concat_lines_of( emoji->get_css( ) ) && `</style>` &&
+    `<style>` && emoji->styles( ) && `</style>` &&
     `</head>` &&
     `<body>` && emoji->format( p_text ) && `</body>` &&
     `</html>`.

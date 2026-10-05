@@ -24,7 +24,7 @@ Get CSS for the emoji class:
 
 ```abap
 data(emoji) = /apmg/cl_emoji=>create( ).
-data(css) = emoji->get_css( ).
+data(css) = /apmg/cl_emoji=>styles( ).
 ```
 
 Find emojis with regex:

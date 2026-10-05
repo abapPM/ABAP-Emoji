@@ -58,7 +58,7 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_css.
-    DATA(emoji) = cut->get_css( ).
+    DATA(emoji) = cut->styles( ).
 
     cl_aunit_assert=>assert_not_initial( emoji ).
   ENDMETHOD.
