@@ -16,7 +16,8 @@ START-OF-SELECTION.
   DATA(emoji) = /apmg/cl_emoji=>create( ).
 
   DATA(html) =
-    `<html>` &&
+    `<!DOCTYPE html>` &&
+    `<html lang="en">` &&
     `<head>` &&
     `<title>Emoji Tester</title>` &&
     `<style>` && /apmg/cl_emoji=>styles( ) && `</style>` &&

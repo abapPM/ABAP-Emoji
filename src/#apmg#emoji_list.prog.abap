@@ -18,7 +18,8 @@ START-OF-SELECTION.
   DATA(emoji) = /apmg/cl_emoji=>create( ).
 
   DATA(html) =
-    `<html>` &&
+    `<!DOCTYPE html>` &&
+    `<html lang="en">` &&
     `<head>` &&
     `<title>Emoji Tester</title>` &&
     `<style>` && /apmg/cl_emoji=>styles( ) && `</style>` &&
@@ -41,7 +42,8 @@ START-OF-SELECTION.
     ENDIF.
 
     DATA(tag) = |:{ <emoji> }:|.
-    html = html && emoji->format( tag ) && |  { tag }<br>|.
+    html = html && emoji->format( tag ) && |  { tag }|.
+    html = html && '<br><div style="height:3px;"></div>'.
     count = count + 1.
   ENDLOOP.
 

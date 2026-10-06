@@ -12,6 +12,8 @@ Based on [GitHub Emoji](https://docs.github.com/en/rest/emojis/emojis) and [API]
 
 NO WARRANTIES, [MIT License](LICENSE)
 
+Emoji are in PNG format. If you looking for emoji in SVG format, check out [ABAP Twemoji](https://registry.abappm.com/twemoji).
+
 ## Prerequisite
 
 HTML output with Internet connection since Emoji graphics are hosted on https://github.githubassets.com.
