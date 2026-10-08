@@ -4,9 +4,15 @@
 * Copyright 2024 apm.to Inc. <https://apm.to>
 * SPDX-License-Identifier: MIT
 ************************************************************************
+* To find UTF16 values for uccp, check this site:
+* https://www.coderstool.com/unicode-text-converter
+************************************************************************
+
 CLASS ltcl_emoji_test DEFINITION FOR TESTING RISK LEVEL HARMLESS DURATION SHORT FINAL.
 
   PRIVATE SECTION.
+    CONSTANTS c_url TYPE string VALUE 'https://github.githubassets.com/images/icons/emoji/unicode'.
+
     DATA cut TYPE REF TO /apmg/cl_emoji.
 
     METHODS setup.
@@ -38,7 +44,7 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
 
   METHOD emoji_format.
     DATA(html) = cut->format( 'Here is a :heart:' ).
-    DATA(exp) = 'Here is a <img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
+    DATA(exp) = |Here is a <img src="{ c_url }/2764.png" class="emoji" alt="heart">|.
 
     cl_aunit_assert=>assert_equals(
       act = html
@@ -50,7 +56,7 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
       line     = 'Here is a :heart:'
       base_url = 'https://mydomain.com/emoji' ).
 
-    DATA(exp) = 'Here is a <img src="https://mydomain.com/emoji/unicode/2764.png" class="emoji">'.
+    DATA(exp) = |Here is a <img src="https://mydomain.com/emoji/unicode/2764.png" class="emoji" alt="heart">|.
 
     cl_aunit_assert=>assert_equals(
       act = html
@@ -70,9 +76,9 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_unicode_heart.
-    " heart (utf16: 6427)
-    DATA(html) = cut->format( '❤' ).
-    DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" class="emoji">'.
+    " heart (utf16: \u2764)
+    DATA(html) = cut->format( cl_abap_conv_in_ce=>uccp( '2764' ) ).
+    DATA(exp)  = |<img src="{ c_url }/2764.png" class="emoji" alt="heart">|.
 
     cl_aunit_assert=>assert_equals(
       act = html
@@ -80,9 +86,9 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_unicode_gemini.
-    " gemini (utf16: 4A26)
-    DATA(html) = cut->format( '♊' ).
-    DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/264a.png" class="emoji">'.
+    " gemini (utf16: \u264A)
+    DATA(html) = cut->format( cl_abap_conv_in_ce=>uccp( '264A' ) ).
+    DATA(exp)  = |<img src="{ c_url }/264a.png" class="emoji" alt="gemini">|.
 
     cl_aunit_assert=>assert_equals(
       act = html
@@ -90,9 +96,9 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_unicode_ambulance.
-    " ambulance (utf16: 3DD8 91DE)
-    DATA(html) = cut->format( '🚑' ).
-    DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f691.png" class="emoji">'.
+    " ambulance (utf16: \uD83D \uDE91)
+    DATA(html) = cut->format( cl_abap_conv_in_ce=>uccp( 'D83D' ) && cl_abap_conv_in_ce=>uccp( 'DE91' ) ).
+    DATA(exp)  = |<img src="{ c_url }/1f691.png" class="emoji" alt="ambulance">|.
 
     cl_aunit_assert=>assert_equals(
       act = html
@@ -100,9 +106,10 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_unicode_greenland.
-    " greenland (utf16 3CD8 ECDD 3CD8 F1DD)
-    DATA(html) = cut->format( '🇬🇱' ).
-    DATA(exp)  = '<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f1ec-1f1f1.png" class="emoji">'.
+    " greenland (utf16 	\uD83C \uDDEC \uD83C \uDDF1)
+    DATA(html) = cut->format( cl_abap_conv_in_ce=>uccp( 'D83C' ) && cl_abap_conv_in_ce=>uccp( 'DDEC' )
+                           && cl_abap_conv_in_ce=>uccp( 'D83C' ) && cl_abap_conv_in_ce=>uccp( 'DDF1' ) ).
+    DATA(exp)  = |<img src="{ c_url }/1f1ec-1f1f1.png" class="emoji" alt="greenland">|.
 
     cl_aunit_assert=>assert_equals(
       act = html
