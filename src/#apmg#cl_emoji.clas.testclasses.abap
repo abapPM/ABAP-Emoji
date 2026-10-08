@@ -106,7 +106,7 @@ CLASS ltcl_emoji_test IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD emoji_unicode_greenland.
-    " greenland (utf16 	\uD83C \uDDEC \uD83C \uDDF1)
+    " greenland (utf16: \uD83C \uDDEC \uD83C \uDDF1)
     DATA(html) = cut->format( cl_abap_conv_in_ce=>uccp( 'D83C' ) && cl_abap_conv_in_ce=>uccp( 'DDEC' )
                            && cl_abap_conv_in_ce=>uccp( 'D83C' ) && cl_abap_conv_in_ce=>uccp( 'DDF1' ) ).
     DATA(exp)  = |<img src="{ c_url }/1f1ec-1f1f1.png" class="emoji" alt="greenland">|.
